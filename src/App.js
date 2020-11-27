@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import {Button, Nav, NavDropdown, FormControl,Form} from 'react-bootstrap';
+import "bootswatch/dist/darkly/bootstrap.min.css";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './home.js';
+import Play from './play.js';
+import Navbar from './navbar';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar/>
+        <Route exact path='/' component={Home}/>
+        <Switch>
+            <Route path='/home' component={Home} />
+            <Route path='/play' component={Play} />
+        </Switch>
+      </Router>
     </div>
   );
 }
